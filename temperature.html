@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Temperature Converter - UtilTool</title>
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+
+<header>
+    <h1>Temperature Converter</h1>
+    <p>Convert between Celsius and Fahrenheit</p>
+</header>
+
+<nav>
+    <a href="index.html">Home</a>
+    <a href="calculator.html">Calculator</a>
+    <a href="temperature.html">Temperature</a>
+    <a href="currency.html">Currency</a>
+    <a href="about.html">About</a>
+    <button id="darkModeToggle">🌙 Dark Mode</button>
+</nav>
+
+<div class="card">
+
+    <h2>Temperature Converter</h2>
+
+    <input id="tempValue" type="number" placeholder="Enter value"
+           style="width:100%;padding:10px;margin-bottom:10px;">
+
+    <select id="tempType"
+            style="width:100%;padding:10px;margin-bottom:10px;">
+        <option value="cToF">Celsius → Fahrenheit</option>
+        <option value="fToC">Fahrenheit → Celsius</option>
+    </select>
+
+    <button onclick="convertTemp()"
+            style="width:100%;padding:12px;background:#0073aa;color:white;border:none;">
+        Convert
+    </button>
+
+    <h3 id="tempResult" style="margin-top:20px;">Result:</h3>
+
+    <hr>
+
+    <h3>History</h3>
+    <div id="tempHistory"></div>
+
+    <button onclick="clearHistory()"
+            style="width:100%;padding:10px;margin-top:10px;">
+        Clear History
+    </button>
+
+</div>
+
+<script>
+function convertTemp() {
+
+    let value = parseFloat(document.getElementById("tempValue").value);
+    let type = document.getElementById("tempType").value;
+
+    if (isNaN(value)) {
+        document.getElementById("tempResult").innerText =
+            "Result: Please enter a valid number";
+        return;
+    }
+
+    let result;
+
+    if (type === "cToF") {
+        result = (value * 1.8) + 32;
+        document.getElementById("tempResult").innerText =
+            value + " °C = " + result.toFixed(2) + " °F";
+
+    } else {
+        result = (value - 32) / 1.8;
+        document.getElementById("tempResult").innerText =
+            value + " °F = " + result.toFixed(2) + " °C";
+    }
+
+    document.getElementById("tempHistory").innerHTML +=
+        value + " → " + result.toFixed(2) + "<br>";
+}
+
+function clearHistory() {
+    document.getElementById("tempHistory").innerHTML = "";
+}
+</script>
+<script src="script.js"></script>
+</body>
+</html>

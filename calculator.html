@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calculator - UtilityTools Online</title>
+    <link rel="stylesheet" href="style.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<header>
+    <h1>Calculator</h1>
+</header>
+<nav>
+    <a href="index.html">Home</a>
+    <a href="calculator.html">Calculator</a>
+    <a href="temperature.html">Temperature</a>
+    <a href="currency.html">Currency</a>
+    <a href="about.html">About</a>
+    <button id="darkModeToggle">🌙 Dark Mode</button>
+</nav>
+
+<input id="num1" type="number" placeholder="First number">
+<br><br>
+
+<input id="num2" type="number" placeholder="Second number">
+<br><br>
+
+<select id="operation">
+    <option value="add">Add</option>
+    <option value="sub">Subtract</option>
+    <option value="mul">Multiply</option>
+    <option value="div">Divide</option>
+</select>
+
+<br><br>
+
+<button onclick="calculate()">Calculate</button>
+
+<h3 id="result">Result: </h3>
+<h4>History</h4>
+<div id="history"></div>
+
+<script>
+function calculate() {
+
+    let a = parseFloat(document.getElementById("num1").value);
+    let b = parseFloat(document.getElementById("num2").value);
+    let op = document.getElementById("operation").value;
+
+    let result;
+
+    if (isNaN(a) || isNaN(b)) {
+        document.getElementById("result").innerText =
+            "Result: Please enter valid numbers";
+        return;
+    }
+
+    switch(op) {
+
+        case "add":
+            result = a + b;
+            break;
+
+        case "sub":
+            result = a - b;
+            break;
+
+        case "mul":
+            result = a * b;
+            break;
+
+        case "div":
+            if (b === 0) {
+                document.getElementById("result").innerText =
+                    "Result: Cannot divide by zero";
+                return;
+            }
+            result = a / b;
+            break;
+    }
+
+    document.getElementById("result").innerText =
+        "Result: " + result;
+    document.getElementById("history").innerHTML +=
+    a + " " + op + " " + b + " = " + result + "<br>";
+}
+
+</script>
+<script src="script.js"></script>
+</body>
+</html>
