@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Unit Converter</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+<nav class="navbar">
+    <div class="logo">
+        <a href="index.html">UtilTool</a>
+    </div>
+
+    <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="calculator.html">Calculator</a>
+        <a href="temperature.html">Temperature</a>
+        <a href="currency.html">Currency</a>
+        <a href="bmi.html">BMI</a>
+        <a href="units.html">Unit Converter</a>
+        <a href="about.html">About</a>
+        <button id="darkModeToggle">🌙</button>
+    </div>
+</nav>
+<h1>Unit Converter</h1>
+
+<div class="card">
+
+    <input
+        type="number"
+        id="unitInput"
+        placeholder="Enter value">
+
+    <select id="conversion">
+
+        <option value="kmToMiles">
+            Kilometers → Miles
+        </option>
+
+        <option value="milesToKm">
+            Miles → Kilometers
+        </option>
+
+        <option value="kgToLbs">
+            Kilograms → Pounds
+        </option>
+
+        <option value="lbsToKg">
+            Pounds → Kilograms
+        </option>
+
+        <option value="cmToInches">
+            Centimeters → Inches
+        </option>
+
+        <option value="inchesToCm">
+            Inches → Centimeters
+        </option>
+
+    </select>
+
+    <button onclick="convertUnit()">
+        Convert
+    </button>
+
+    <h2 id="unitResult"></h2>
+
+</div>
+
+<script>
+
+function convertUnit() {
+
+    let value =
+        parseFloat(
+            document.getElementById("unitInput").value
+        );
+
+    let type =
+        document.getElementById("conversion").value;
+
+    let result = 0;
+
+    switch(type) {
+
+        case "kmToMiles":
+            result = value * 0.621371;
+            break;
+
+        case "milesToKm":
+            result = value * 1.60934;
+            break;
+
+        case "kgToLbs":
+            result = value * 2.20462;
+            break;
+
+        case "lbsToKg":
+            result = value * 0.453592;
+            break;
+
+        case "cmToInches":
+            result = value * 0.393701;
+            break;
+
+        case "inchesToCm":
+            result = value * 2.54;
+            break;
+    }
+
+    document.getElementById("unitResult")
+        .innerText =
+        result.toFixed(2);
+}
+
+</script>
+
+</body>
+</html>
