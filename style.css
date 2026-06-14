@@ -13,9 +13,12 @@ header {
     margin-bottom: 1.875rem; /* 30px */
 }
 
-h1,
+h1 {
+    color: #ffffff;
+}
+
 h2 {
-    color: #fff;
+    color: #222222;
 }
 
 nav {
